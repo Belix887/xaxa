@@ -243,7 +243,7 @@
     setTimeout(() => el.remove(), 650);
   }));
 
-  // Rain particles
+  // Rain particles (reduced on small screens)
   if (rainCanvas) {
     const ctx = rainCanvas.getContext('2d');
     function resizeCanvas() {
@@ -252,7 +252,9 @@
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-    const drops = Array.from({ length: 120 }, () => ({
+    const isSmall = window.matchMedia('(max-width: 480px)').matches;
+    const dropCount = isSmall ? 60 : 120;
+    const drops = Array.from({ length: dropCount }, () => ({
       x: Math.random() * rainCanvas.width,
       y: Math.random() * rainCanvas.height,
       l: 8 + Math.random() * 14,

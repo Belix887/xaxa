@@ -20,6 +20,7 @@
 
 * { box-sizing: border-box }
 html, body { height: 100% }
+html { overflow-x: hidden }
 html { scroll-behavior: smooth }
 body {
   margin: 0;
@@ -29,12 +30,16 @@ body {
               radial-gradient(1000px 400px at 0% 20%, rgba(0,255,163,0.06), transparent),
               var(--bg);
   overflow-x: hidden;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .container {
-  width: min(1200px, 96%);
+  width: min(1200px, 96vw);
   margin: 0 auto;
 }
+img, canvas, svg, video { max-width: 100%; height: auto }
+.section { overflow-x: clip }
 
 /* Header */
 .site-header {
@@ -46,7 +51,9 @@ body {
 }
 .site-header .container { display: flex; align-items: center; justify-content: space-between; padding: 12px 0 }
 .logo { font-weight: 800; letter-spacing: 0.6px; text-decoration: none; color: var(--text) }
-.nav a { color: var(--muted); text-decoration: none; margin-left: 16px }
+.nav { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none }
+.nav::-webkit-scrollbar { display: none }
+.nav a { color: var(--muted); text-decoration: none }
 .nav a:hover { color: var(--text) }
 
 /* Preloader */
@@ -71,9 +78,9 @@ body {
 .hero-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.05) contrast(1.05); transform: scale(1.06) }
 .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 50% at 50% 70%, transparent, rgba(11,15,20,0.75)); pointer-events: none }
 .hero-content { position: relative; z-index: 1; padding-top: 16vh }
-.glow-title { font-size: clamp(40px, 8vw, 96px); line-height: 0.95; margin: 0; text-shadow: 0 1px 0 #051018, var(--glow) }
+.glow-title { font-size: clamp(34px, 7.2vw, 96px); line-height: 0.98; margin: 0; text-shadow: 0 1px 0 #051018, var(--glow) }
 .glow-title span { color: var(--primary) }
-.subtitle { color: var(--muted); margin-top: 8px; font-size: 18px }
+.subtitle { color: var(--muted); margin-top: 8px; font-size: clamp(14px, 4vw, 18px) }
 .cta-row { margin-top: 18px; display: flex; gap: 12px }
 .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; border-radius: 12px; text-decoration: none; color: var(--text); border: 1px solid rgba(255,255,255,0.08) }
 .btn.primary { background: linear-gradient(135deg, rgba(0,209,255,0.18), rgba(0,255,163,0.18)); border: 1px solid rgba(0,255,200,0.25) }
@@ -84,13 +91,13 @@ body {
 
 /* Sections */
 .section { padding: 80px 0 }
-.section-title { font-size: clamp(24px, 4.2vw, 40px); margin: 0 0 10px 0 }
-.section-lead { color: var(--muted); margin: 0 0 24px 0 }
+.section-title { font-size: clamp(20px, 4.8vw, 40px); margin: 0 0 10px 0 }
+.section-lead { color: var(--muted); margin: 0 0 22px 0; font-size: clamp(14px, 3.8vw, 18px) }
 
 /* Gallery */
 .gallery .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px }
 .tile { position: relative; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 12px; overflow: hidden }
-.tile img { width: 100%; height: 180px; object-fit: cover; transition: transform 0.5s ease, filter 0.5s ease }
+.tile img { width: 100%; height: 160px; object-fit: cover; transition: transform 0.5s ease, filter 0.5s ease }
 .tile::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); border-radius: 12px; pointer-events: none }
 .tile:hover img { transform: scale(1.06); filter: saturate(1.1) }
 
@@ -160,6 +167,7 @@ body {
 /* Game */
 .game .game-wrap { position: relative; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; background: #0a0e13 }
 .hud { position: absolute; right: 12px; top: 12px; display: flex; gap: 12px; align-items: center; background: rgba(10,14,19,0.6); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 6px 10px }
+.game canvas { width: 100%; height: auto; display: block }
 
 /* Footer */
 .site-footer { padding: 24px 0; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px }
@@ -175,6 +183,61 @@ body {
 @media (max-width: 640px) {
   .gallery .grid { grid-template-columns: repeat(2, 1fr) }
   .hero { padding-bottom: 24vh }
+}
+
+/* Tablet */
+@media (max-width: 820px) {
+  .section { padding: 64px 0 }
+  .site-header .container { padding: 10px 0 }
+  .showcase-stage img { height: 340px }
+  .showcase-thumbs .thumb img { width: 74px; height: 50px }
+  .stage-nav { padding: 6px 8px }
+  .plate .plate-face { height: 84px }
+  .plate .code, .plate .tail { font-size: 42px }
+  .plate .digits { font-size: 48px }
+  .plate .plate-right { min-width: 74px }
+}
+
+/* Phone */
+@media (max-width: 480px) {
+  .section { padding: 52px 0 }
+  .hero { min-height: 72vh; padding-bottom: 18vh }
+  .subtitle { font-size: 16px }
+  .cta-row { gap: 8px }
+  .showcase { gap: 10px }
+  .showcase-stage img { height: 280px }
+  .showcase-thumbs .thumb img { width: 64px; height: 44px }
+  .stage-nav { top: auto; bottom: 12px; transform: none }
+  .specs-grid { grid-template-columns: 1fr }
+  .t-item { padding: 14px }
+  .plate .plate-face { height: 74px; padding: 8px 12px }
+  .plate .plate-left { gap: 10px }
+  .plate .code, .plate .tail { font-size: 36px }
+  .plate .digits { font-size: 42px }
+  .plate .plate-right { margin-left: 12px; padding-left: 12px; min-width: 64px }
+  .hud { right: 8px; top: 8px; gap: 8px; padding: 4px 8px }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .gallery .grid { grid-template-columns: 1fr }
+  .showcase-stage img { height: 240px }
+  .showcase-thumbs .thumb img { width: 56px; height: 38px }
+}
+
+/* iPhone 15/15 Pro fine tuning (390–393px logical width) */
+@media (max-width: 395px) {
+  .site-header { padding-top: env(safe-area-inset-top) }
+  .glow-title { font-size: 44px }
+  .hero { min-height: 68vh; padding-bottom: 16vh }
+  .showcase-stage img { height: 268px }
+  .showcase-thumbs .thumb img { width: 60px; height: 42px }
+  .chip { padding: 7px 10px }
+  .plate .plate-face { height: 70px }
+  .plate .code, .plate .tail { font-size: 34px }
+  .plate .digits { font-size: 40px }
+  .plate .plate-right { min-width: 58px }
+  .site-footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)) }
 }
 
 /* Plate fun */

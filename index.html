@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chevrolet Lacetti — Презентация</title>
+    <meta name="description" content="Стильная презентация Chevrolet Lacetti: фото, характеристики, история и интерактивные блоки с мини-игрой." />
+    <meta property="og:title" content="Chevrolet Lacetti — Презентация" />
+    <meta property="og:description" content="Стильная презентация Chevrolet Lacetti с анимациями, галереей и мини-игрой." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="photo_1_2025-09-30_10-21-07.jpg" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="preload" href="main.js" as="script" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader-inner">
+        <svg viewBox="0 0 120 120" class="spinner" aria-label="Загрузка">
+          <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00D1FF" />
+              <stop offset="100%" stop-color="#00FFA3" />
+            </linearGradient>
+          </defs>
+          <circle cx="60" cy="60" r="46" stroke="url(#g)" stroke-width="8" fill="none" stroke-linecap="round" />
+        </svg>
+        <div class="progress">
+          <div class="bar" id="progress-bar" style="width:0%"></div>
+        </div>
+        <div class="progress-text"><span id="progress-text">0</span>%</div>
+        <div class="preloader-tip">Загружаем фотоконтент Chevrolet Lacetti…</div>
+      </div>
+    </div>
+
+    <!-- Header/Nav -->
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="#hero" aria-label="Chevrolet Lacetti">Lacetti</a>
+        <nav class="nav">
+          <a href="#gallery">Галерея</a>
+          <a href="#specs">Характеристики</a>
+          <a href="#story">История</a>
+          <a href="#interactive">Шоу‑кейс</a>
+          <a href="#plate">Номер</a>
+          <a href="#game">Мини‑игра</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero" class="hero" aria-label="Обложка">
+      <div class="hero-media" data-parallax>
+        <img src="photo_10_2025-09-30_10-21-07.jpg" alt="Chevrolet Lacetti — фронтальный ракурс" fetchpriority="high" />
+      </div>
+      <div class="hero-content container">
+        <h1 class="glow-title"><span>Chevrolet</span> Lacetti</h1>
+        <p class="subtitle">Комфорт, динамика и стиль — в каждой детали.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#gallery">Смотреть галерею</a>
+          <a class="btn ghost" href="#game">Сыграть в мини‑игру</a>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">Прокрутите вниз</div>
+    </section>
+
+    <!-- Plate Fun -->
+    <section id="plate" class="section plate">
+      <div class="container">
+        <h2 class="section-title">Госномер: К701СА 32</h2>
+        <p class="section-lead">Сканируйте и узнайте — счастливый ли сегодня номер. Вдруг +5 к харизме?</p>
+        <div class="plate-wrap" id="plate-card" aria-label="Интерактивный номер">
+          <div class="scan-line" aria-hidden="true"></div>
+          <div class="plate-face">
+            <div class="plate-left">
+              <div class="code">К</div>
+              <div class="digits">701</div>
+              <div class="tail">СА</div>
+            </div>
+            <div class="plate-right">
+              <div class="region">32</div>
+              <div class="flag">RUS</div>
+            </div>
+          </div>
+          <div class="plate-badges">
+            <span class="badge" id="lucky-badge">Проверяем удачу…</span>
+            <button class="btn small" id="scan-btn" aria-label="Сканировать номер">Сканировать</button>
+          </div>
+          <div class="plate-joke" id="plate-joke" aria-live="polite">Подозреваю, что 701 — это пробег до ближайшей шаурмы.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section gallery">
+      <div class="container">
+        <h2 class="section-title">Галерея</h2>
+        <p class="section-lead">Живые кадры Lacetti. Кликните, чтобы открыть лайтбокс.</p>
+        <div class="grid" id="gallery-grid">
+          <!-- Images populated from markup to keep control -->
+          <button class="tile" data-src="photo_1_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 1">
+            <img loading="lazy" src="photo_1_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 1" />
+          </button>
+          <button class="tile" data-src="photo_2_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 2">
+            <img loading="lazy" src="photo_2_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 2" />
+          </button>
+          <button class="tile" data-src="photo_3_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 3">
+            <img loading="lazy" src="photo_3_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 3" />
+          </button>
+          <button class="tile" data-src="photo_4_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 4">
+            <img loading="lazy" src="photo_4_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 4" />
+          </button>
+          <button class="tile" data-src="photo_5_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 5">
+            <img loading="lazy" src="photo_5_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 5" />
+          </button>
+          <button class="tile" data-src="photo_6_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 6">
+            <img loading="lazy" src="photo_6_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 6" />
+          </button>
+          <button class="tile" data-src="photo_7_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 7">
+            <img loading="lazy" src="photo_7_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 7" />
+          </button>
+          <button class="tile" data-src="photo_8_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 8">
+            <img loading="lazy" src="photo_8_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 8" />
+          </button>
+          <button class="tile" data-src="photo_9_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 9">
+            <img loading="lazy" src="photo_9_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 9" />
+          </button>
+          <button class="tile" data-src="photo_10_2025-09-30_10-21-07.jpg" aria-label="Открыть фото 10">
+            <img loading="lazy" src="photo_10_2025-09-30_10-21-07.jpg" alt="Lacetti — фото 10" />
+          </button>
+        </div>
+      </div>
+      <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Просмотр фото">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Закрыть">✕</button>
+        <img class="lightbox-img" id="lightbox-img" alt="Фото Lacetti в большом размере" />
+        <button class="lightbox-prev" id="lightbox-prev" aria-label="Предыдущее">‹</button>
+        <button class="lightbox-next" id="lightbox-next" aria-label="Следующее">›</button>
+      </div>
+    </section>
+
+    <!-- Specs -->
+    <section id="specs" class="section specs">
+      <div class="container">
+        <h2 class="section-title">Характеристики</h2>
+        <div class="specs-grid">
+          <div class="spec-card" data-counter="11.0" data-suffix=" сек">
+            <div class="spec-label">0–100 км/ч</div>
+            <div class="spec-value">0</div>
+          </div>
+          <div class="spec-card" data-counter="110" data-suffix=" кВт">
+            <div class="spec-label">Мощность</div>
+            <div class="spec-value">0</div>
+          </div>
+          <div class="spec-card" data-counter="9.0" data-suffix=" л/100 км">
+            <div class="spec-label">Расход</div>
+            <div class="spec-value">0</div>
+          </div>
+          <div class="spec-card" data-counter="450" data-suffix=" л">
+            <div class="spec-label">Багажник</div>
+            <div class="spec-value">0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story / Timeline -->
+    <section id="story" class="section story">
+      <div class="container">
+        <h2 class="section-title">История и моменты</h2>
+        <div class="timeline">
+          <article class="t-item">
+            <div class="t-year">День 1</div>
+            <h3>Первый запуск</h3>
+            <p>Сел, завёл — и такой: «ебать, едет мягко, рулится чётко». Сердце официально здесь.</p>
+          </article>
+          <article class="t-item">
+            <div class="t-year">День 30</div>
+            <h3>Трасса, режим «валим аккуратно»</h3>
+            <p>Круиз 110–120, обгоны уверенные. Бензин ворчит, но терпит — «да ну нахуй, сегодня можно».</p>
+          </article>
+          <article class="t-item">
+            <div class="t-year">День 100</div>
+            <h3>Городские будни</h3>
+            <p>Паркуется с полоборота, лежачие не бесят, светофоры пролетаем бодро. Настроение: «поехали уже, сука!»</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Showcase -->
+    <section id="interactive" class="section interactive">
+      <div class="container">
+        <h2 class="section-title">Интерактивный шоу‑кейс</h2>
+        <p class="section-lead">Меняйте режимы визуализации, чтобы по‑разному взглянуть на Lacetti.</p>
+        <div class="showcase">
+          <div class="showcase-controls">
+            <button class="chip active" data-filter="none">Стандарт</button>
+            <button class="chip" data-filter="contrast">Контраст</button>
+            <button class="chip" data-filter="warm">Тёплый</button>
+            <button class="chip" data-filter="cool">Холодный</button>
+            <button class="chip" data-filter="noir">Noir</button>
+          </div>
+          <div class="showcase-thumbs" id="showcase-thumbs" aria-label="Выбор фото">
+            <button class="thumb active" data-src="photo_4_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_4_2025-09-30_10-21-07.jpg" alt="thumb 4" /></button>
+            <button class="thumb" data-src="photo_1_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_1_2025-09-30_10-21-07.jpg" alt="thumb 1" /></button>
+            <button class="thumb" data-src="photo_2_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_2_2025-09-30_10-21-07.jpg" alt="thumb 2" /></button>
+            <button class="thumb" data-src="photo_3_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_3_2025-09-30_10-21-07.jpg" alt="thumb 3" /></button>
+            <button class="thumb" data-src="photo_5_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_5_2025-09-30_10-21-07.jpg" alt="thumb 5" /></button>
+            <button class="thumb" data-src="photo_6_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_6_2025-09-30_10-21-07.jpg" alt="thumb 6" /></button>
+            <button class="thumb" data-src="photo_7_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_7_2025-09-30_10-21-07.jpg" alt="thumb 7" /></button>
+            <button class="thumb" data-src="photo_8_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_8_2025-09-30_10-21-07.jpg" alt="thumb 8" /></button>
+            <button class="thumb" data-src="photo_9_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_9_2025-09-30_10-21-07.jpg" alt="thumb 9" /></button>
+            <button class="thumb" data-src="photo_10_2025-09-30_10-21-07.jpg"><img loading="lazy" src="photo_10_2025-09-30_10-21-07.jpg" alt="thumb 10" /></button>
+          </div>
+          <div class="showcase-stage">
+            <img id="showcase-img" src="photo_4_2025-09-30_10-21-07.jpg" alt="Lacetti — интерактивный вид" loading="lazy" />
+            <canvas id="rain-canvas" aria-hidden="true"></canvas>
+            <div class="glass" id="glass" aria-hidden="true"></div>
+            <div class="grind" aria-hidden="true"></div>
+            <button class="stage-nav prev" id="stage-prev" aria-label="Предыдущее фото">‹</button>
+            <button class="stage-nav next" id="stage-next" aria-label="Следующее фото">›</button>
+            <div class="hotspot" style="left:18%;top:62%" data-title="Литые диски" data-text="Элегантные диски подчёркивают образ и улучшают управляемость."></div>
+            <div class="hotspot" style="left:68%;top:35%" data-title="Оптика" data-text="Чистая световая линия для уверенности ночью."></div>
+          </div>
+        </div>
+      </div>
+      <div class="hotspot-popover" id="hotspot-popover" aria-hidden="true">
+        <h3 id="hotspot-title"></h3>
+        <p id="hotspot-text"></p>
+      </div>
+    </section>
+
+    <!-- Mini Game -->
+    <section id="game" class="section game">
+      <div class="container">
+        <h2 class="section-title">Мини‑игра: Избегай препятствий</h2>
+        <p class="section-lead">Управляйте Lacetti стрелками. Собирайте монеты, избегайте конусов. Побейте рекорд!</p>
+        <div class="game-wrap">
+          <canvas id="game-canvas" width="900" height="520" aria-label="Игровое поле"></canvas>
+          <div class="hud">
+            <div>Счёт: <span id="score">0</span></div>
+            <div>Рекорд: <span id="best">0</span></div>
+            <button id="restart" class="btn small">Заново</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="brand">Lacetti</div>
+        <div class="credit">Создано с любовью для друга • © <span id="year"></span></div>
+      </div>
+    </footer>
+
+    <script src="game.js" defer></script>
+    <script src="main.js" defer></script>
+  </body>
+  </html>
+
+
